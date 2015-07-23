@@ -310,4 +310,8 @@
   "M-<mouse-5>"   'scroll-up-line)
 
 (ublt/keys 'helm helm-map
+  "s-h"         'minibuffer-keyboard-quit
+  "s-<return> " 'minibuffer-keyboard-quit
+  "C-x h"       'helm-mark-all
+  "C-f"         'helm-follow-mode
   "s-w"         'ublt-helm/maybe-exit-minibuffer-other-window)
