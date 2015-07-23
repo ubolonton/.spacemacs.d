@@ -308,3 +308,6 @@
   "S-<mouse-5>"   'forward-paragraph
   "M-<mouse-4>"   'scroll-down-line
   "M-<mouse-5>"   'scroll-up-line)
+
+(ublt/keys 'helm helm-map
+  "s-w"         'ublt-helm/maybe-exit-minibuffer-other-window)
