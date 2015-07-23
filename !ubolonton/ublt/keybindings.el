@@ -309,6 +309,9 @@
   "M-<mouse-4>"   'scroll-down-line
   "M-<mouse-5>"   'scroll-up-line)
 
+(ublt/keys 'org org-mode-map
+  "s-i" 'helm-org-in-buffer-headings)
+
 (ublt/keys 'helm helm-map
   "s-h"         'minibuffer-keyboard-quit
   "s-<return> " 'minibuffer-keyboard-quit
