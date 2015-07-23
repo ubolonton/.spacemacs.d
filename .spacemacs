@@ -125,5 +125,6 @@
   "This is were you can ultimately override default Spacemacs configuration.
 This function is called at the very end of Spacemacs initialization."
   (setq custom-file "~/.emacs.d/custom.el")
+  (load custom-file)
   ;; (setq vim-empty-lines-indicator "")
 )
