@@ -247,7 +247,6 @@
   ;; "C-z"           nil                   ; who needs suspend-frame?
   "S-s-SPC"       'whitespace-mode
   ;; "M-x"           'helm-M-x          ; C-x C-m for the original
-  "M-X"           'smex-major-mode-commands
   "C-h C-a"       'apropos-command
   ;; "C-x C-b"       'ido-switch-buffer     ; Because it's to easy to mis-press
   ;; "C-x C-b"       'helm-mini       ; Because it's to easy to mis-press
