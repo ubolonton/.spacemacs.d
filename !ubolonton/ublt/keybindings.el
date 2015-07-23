@@ -314,4 +314,5 @@
   "s-<return> " 'minibuffer-keyboard-quit
   "C-x h"       'helm-mark-all
   "C-f"         'helm-follow-mode
+  "s-n"         'helm-select-action
   "s-w"         'ublt-helm/maybe-exit-minibuffer-other-window)
