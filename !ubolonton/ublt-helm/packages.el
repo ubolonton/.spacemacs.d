@@ -23,6 +23,12 @@
 
 (defun ublt-helm/post-init-helm ()
   (setq helm-candidate-separator "────────────────────────────────────────────────────────────────────────────────")
+  (when ublt-helm-pervasive-follow-mode
+    (ublt-helm//enable-follow-mode
+     '((helm-imenu . helm-source-imenu)
+       ;; (helm-buffers . helm-source-buffers-list)
+       (helm-bookmark . helm-source-bookmarks)
+       (helm-regexp . helm-source-regexp))))
   (use-package helm-locate
     :defer t
     :config (progn

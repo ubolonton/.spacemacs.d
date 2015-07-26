@@ -13,4 +13,7 @@
 ;; Variables
 
 (defvar ublt-helm-enable-exit-other-window nil
-  "If non-nil, enable exiting helm in other window")
+  "If non-nil, enable exiting helm in other window.")
+
+(defvar ublt-helm-pervasive-follow-mode nil
+  "If non-nil, try to enable follow mode as much as possible.")

@@ -31,3 +31,10 @@
 (defadvice helm-execute-selection-action-1 (around ublt-helm/maybe-other-window-cleanup activate)
   (unwind-protect ad-do-it
     (setq ublt-helm--exit-other-window-p nil)))
+
+(defun ublt-helm//enable-follow-mode (pkg-source-pairs)
+  (dolist (pkg-source pkg-source-pairs)
+    (let ((pkg (car pkg-source))
+          (source (cdr pkg-source)))
+      (eval-after-load pkg
+        `(helm-attrset 'follow 1 ,source)))))
