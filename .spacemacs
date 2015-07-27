@@ -37,9 +37,7 @@
 
    ublt
    ublt-editing
-   (ublt-helm :variables
-              ublt-helm-enable-exit-other-window t
-              ublt-helm-pervasive-follow-mode t)
+   ublt-helm
    )
  ;; A list of packages and/or extensions that will not be install and loaded.
  dotspacemacs-excluded-packages '(flymake)
