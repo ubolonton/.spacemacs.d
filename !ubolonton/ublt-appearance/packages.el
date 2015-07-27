@@ -16,6 +16,7 @@
     '(
       woman
       htmlize
+      face-remap
       ))
 
 ;; List of packages to exclude.
@@ -34,3 +35,14 @@
 
 (defun ublt-appearance//enable-variable-pitch-mode ()
   (variable-pitch-mode +1))
+
+(defun ublt-appearance/init-face-remap ()
+  (use-package face-remap
+    :defer t
+    :init (when ublt-appearance-use-variable-pitch-mode
+            (dolist (hook '(help-mode-hook
+                            apropos-mode-hook
+                            Info-mode-hook
+                            Man-mode-hook
+                            woman-mode-hook))
+              (add-hook hook #'ublt-appearance//enable-variable-pitch-mode)))))
