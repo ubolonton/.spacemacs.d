@@ -14,7 +14,6 @@
 ;; which require an initialization must be listed explicitly in the list.
 (setq ublt-packages
     '(
-      whole-line-or-region
       help+
       help-mode+
       help-fns+
@@ -22,10 +21,6 @@
 
 ;; List of packages to exclude.
 (setq ublt-excluded-packages '())
-
-(defun ublt/init-whole-line-or-region ()
-  (use-package whole-line-or-region
-    :defer t))
 
 (defun ublt/init-help+ ()
   (use-package help+))
