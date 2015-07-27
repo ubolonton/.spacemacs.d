@@ -17,10 +17,19 @@
       whole-line-or-region
       htmlize
       company
+      prog-mode
       ))
 
 ;; List of packages to exclude.
 (setq ublt-editing-excluded-packages '())
+
+(use-package prog-mode
+  :defer t
+  :config (progn
+            (defun ublt-editing//enable-auto-fill-only-comments ()
+              (setq-local comment-auto-fill-only-comments t)
+              (auto-fill-mode +1))
+            (add-hook 'prog-mode-hook #'ublt-editing//enable-auto-fill-only-comments)))
 
 (defun ublt-editing/init-whole-line-or-region ()
   (use-package whole-line-or-region
