@@ -38,6 +38,7 @@
 
    ublt
    ublt-appearance
+   ublt-navigation
    ublt-editing
    ublt-helm
    )

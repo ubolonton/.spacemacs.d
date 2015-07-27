@@ -141,7 +141,7 @@
   "s-0"           'delete-window
   "s-)"           'bury-buffer
   "s-w"           'other-window
-  "s-W"           'ublt/swap-windows
+  "s-W"           'ublt-navigation/swap-windows
 
   ;; Utilities, super-
   "s-i"           'helm-semantic-or-imenu
@@ -159,8 +159,8 @@
   "s-M"           'ace-jump-char-mode
   "s-r"           'org-capture
   "s-R"           'org-agenda
-  "s-n"           'ublt/switch-to-last-buffer
-  "s-b"           'ublt/browse-url-at-point
+  "s-n"           'ublt-navigation/switch-to-last-buffer
+  "s-b"           'ublt-navigation/browse-url-at-point
   "s-B"           'zeal-at-point
   "s-p"           'pop-global-mark
   "s-<backspace>" 'ublt/toggle-alpha
