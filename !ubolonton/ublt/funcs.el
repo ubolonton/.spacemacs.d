@@ -35,22 +35,3 @@
     (case major-mode
       ('org-mode (call-interactively 'org-open-at-point))
       (t (call-interactively 'browse-url-at-point)))))
-
-
-
-;;; Copy/cut/duplicate whole line if no region is selected
-;; (require 'whole-line-or-region)
-(defun ublt/duplicate-line (prefix)
-    (interactive "p")
-    ;; FIX: This looks dirty
-    (call-interactively 'whole-line-or-region-kill-ring-save)
-    (call-interactively 'whole-line-or-region-yank))
-
-
-
-(defun ublt/unfill-paragraph ()
-  "Does the inverse of `fill-paragraph', by calling it with
-`fill-column' set to a large number."
-  (interactive)
-  (let ((fill-column (point-max)))
-    (call-interactively 'fill-paragraph)))

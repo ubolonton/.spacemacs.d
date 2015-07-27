@@ -172,7 +172,7 @@
   "s-k"           'kill-this-buffer
   ;; "s-l"           'goto-line
   "s-l"           'helm-swoop
-  "s-C"           'ublt/duplicate-line
+  "s-C"           'ublt-editing/duplicate-line
   "s-+"           'text-scale-increase
   "s-="           'text-scale-increase
   "s--"           'text-scale-decrease
@@ -210,7 +210,7 @@
 
   ;; "C-="           'text-scale-increase
 
-  "M-Q"           'ublt/unfill-paragraph
+  "M-Q"           'ublt-editing/unfill-paragraph
 
   ;; ;; Toggling
   ;; "<f9> l"        'global-linum-mode
@@ -228,7 +228,7 @@
   ;; Right, use C-u if you want digit args
   "M-5"           'query-replace
   "M-%"           'query-replace-regexp
-  "M-6"           'ublt/toggle-letter-case
+  "M-6"           'ublt-editing/toggle-letter-case
   ;; "M-7"           'ublt/toggle-cua-rect
   ;; "M-8"           'ublt/cycle-prose-region
   ;; "M-9"           'mark-enclosing-sexp
@@ -300,7 +300,7 @@
   ;; "M-j"           'join-line
 
   ;; "C-c g"         'magit-status
-  ;; "C-c n"         'ublt/cleanup-buffer
+  "C-c n"         'ublt-editing/cleanup-buffer
 
   "s-<mouse-4>"   'text-scale-increase
   "s-<mouse-5>"   'text-scale-decrease

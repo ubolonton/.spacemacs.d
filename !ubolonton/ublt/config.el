@@ -1,6 +1,3 @@
-;; Clean up before saving.
-(add-hook 'before-save-hook #'delete-trailing-whitespace)
-
 ;;
 (setq save-place-limit 3000)
 

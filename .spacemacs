@@ -36,6 +36,7 @@
    markdown
 
    ublt
+   ublt-editing
    (ublt-helm :variables
               ublt-helm-enable-exit-other-window t
               ublt-helm-pervasive-follow-mode t)
