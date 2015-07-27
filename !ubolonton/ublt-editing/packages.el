@@ -16,6 +16,7 @@
     '(
       whole-line-or-region
       htmlize
+      company
       ))
 
 ;; List of packages to exclude.
@@ -27,3 +28,8 @@
 
 (defun ublt-editing/post-init-htmlize ()
   (setq htmlize-html-charset "utf-8"))
+
+(defun ublt-editing/post-init-company ()
+  (setq company-tooltip-flip-when-above t
+        company-tooltip-align-annotations t
+        company-selection-wrap-around t))
