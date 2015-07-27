@@ -15,6 +15,9 @@
 (setq ublt-packages
     '(
       whole-line-or-region
+      help+
+      help-mode+
+      help-fns+
       ))
 
 ;; List of packages to exclude.
@@ -23,3 +26,12 @@
 (defun ublt/init-whole-line-or-region ()
   (use-package whole-line-or-region
     :defer t))
+
+(defun ublt/init-help+ ()
+  (use-package help+))
+
+(defun ublt/init-help-mode+ ()
+  (use-package help-mode+))
+
+(defun ublt/init-help-fns+ ()
+  (use-package help-fns+))
