@@ -36,6 +36,7 @@
    markdown
 
    ublt
+   ublt-appearance
    ublt-editing
    ublt-helm
    )
