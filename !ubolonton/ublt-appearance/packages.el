@@ -17,10 +17,20 @@
       woman
       htmlize
       face-remap
+      prog-mode
       ))
 
 ;; List of packages to exclude.
 (setq ublt-appearance-excluded-packages '())
+
+(use-package prog-mode
+  :defer t
+  :config (progn
+            (defun ublt-appearance//add-watch-words ()
+              (font-lock-add-keywords
+               nil '(("\\<\\(FIXME\\|TODO\\|FIX\\|XXX\\|HACK\\|REFACTOR\\|NOCOMMIT\\|NTA\\)"
+                      1 font-lock-warning-face t))))
+            (add-hook 'prog-mode-hook #'ublt-appearance//add-watch-words)))
 
 (defun ublt-appearance/init-woman ()
   (use-package woman
@@ -33,10 +43,9 @@
   (setq htmlize-css-name-prefix "htmlize-"
         htmlize-html-major-mode 'html-mode))
 
-(defun ublt-appearance//enable-variable-pitch-mode ()
-  (variable-pitch-mode +1))
-
 (defun ublt-appearance/init-face-remap ()
+  (defun ublt-appearance//enable-variable-pitch-mode ()
+    (variable-pitch-mode +1))
   (use-package face-remap
     :defer t
     :init (when ublt-appearance-use-variable-pitch-mode
