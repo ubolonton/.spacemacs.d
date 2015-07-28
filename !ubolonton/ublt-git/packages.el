@@ -34,7 +34,12 @@
    ;; Show whitespace errors only in status buffers.
    magit-diff-paint-whitespace 'status
 
-   ;; Use repo base names in buffer names
+   ;; Git directories
+   magit-repository-directories '("~/Programming/projects"
+                                  "~/Programming/lib")
+   magit-repository-directories-depth 1
+
+  ;; Use repo base names in buffer names
    magit-status-buffer-name-format   "*magit: %b*"
    magit-refs-buffer-name-format     "*magit-refs: %b*"
    magit-log-buffer-name-format      "*magit-log: %b*"
