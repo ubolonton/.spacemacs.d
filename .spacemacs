@@ -42,6 +42,7 @@
    ublt-editing
    ublt-helm
    ublt-dired
+   ublt-git
 
    ublt-lisp
    )
