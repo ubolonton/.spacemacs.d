@@ -17,6 +17,7 @@
       help+
       help-mode+
       help-fns+
+      flycheck
       ))
 
 ;; List of packages to exclude.
@@ -30,3 +31,6 @@
 
 (defun ublt/init-help-fns+ ()
   (use-package help-fns+))
+
+(defun ublt/post-init-flycheck ()
+  (setq flycheck-display-errors-delay 0))
