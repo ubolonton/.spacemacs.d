@@ -40,6 +40,7 @@
    ublt-appearance
    ublt-navigation
    ublt-editing
+   ublt-org
    ublt-helm
    ublt-dired
    ublt-git
