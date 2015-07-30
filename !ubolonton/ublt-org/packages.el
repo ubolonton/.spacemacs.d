@@ -372,6 +372,52 @@
     (add-hook 'org-capture-after-finalize-hook
               #'ublt-org//org-capture-back-to-conkeror)))
 
+(defun ublt-org//get-string-from-file (path)
+  (with-temp-buffer
+    (insert-file-contents path)
+    (buffer-string)))
+
+(defvar ublt-org--latex-classes-dir
+  (file-name-directory load-file-name))
+
+(defun ublt-org//set-up-pdf-export ()
+  (use-package ox-latex
+    :defer t
+    :config
+    ;; Use minted for code highlighting in exported pdf files.
+    ;; http://joat-programmer.blogspot.nl/2013/07/org-mode-version-8-and-pdf-export-with.html
+    (add-to-list 'org-latex-packages-alist '("" "minted"))
+    (setq org-latex-listings 'minted
+          org-latex-pdf-process '("xelatex -shell-escape -interaction nonstopmode %f"
+                                  "xelatex -shell-escape -interaction nonstopmode %f")
+          org-latex-toc-command ""
+          ;; Don't use `inputenc', `fontenc' (xelatex `fontspec' is
+          ;; supposed to handle unicode better)
+          org-latex-default-packages-alist
+          '(("" "fixltx2e" nil)
+            ("" "graphicx" t)
+            ("" "longtable" nil)
+            ("" "float" nil)
+            ("" "wrapfig" nil)
+            ("" "rotating" nil)
+            ("normalem" "ulem" t)
+            ("" "amsmath" t)
+            ("" "textcomp" t)
+            ("" "marvosym" t)
+            ("" "wasysym" t)
+            ("" "amssymb" t)
+            ("" "hyperref" nil)
+            "\\tolerance=1000"))
+    (add-to-list 'org-latex-classes
+                 `("ublt-org-article"
+                   ,(concat ublt-org--latex-classes-dir "article.tex")
+                   ("\\section{%s}" . "\\section*{%s}")
+                   ("\\subsection{%s}" . "\\subsection*{%s}")
+                   ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                   ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                   ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))))
+
 (defun ublt-org/post-init-org ()
   (ublt-org//set-up-basics)
-  (ublt-org//set-up-GTD))
+  (ublt-org//set-up-GTD)
+  (ublt-org//set-up-pdf-export))
