@@ -15,6 +15,7 @@
 (setq ublt-org-packages
     '(
       org
+      ox-reveal
       ))
 
 ;; List of packages to exclude.
@@ -421,3 +422,15 @@
   (ublt-org//set-up-basics)
   (ublt-org//set-up-GTD)
   (ublt-org//set-up-pdf-export))
+
+(defun ublt-org/init-ox-reveal ()
+  (use-package ox-reveal
+    :defer t
+    :config
+    (setq org-reveal-root "reveal.js/"
+          org-reveal-transition "linear"
+          org-reveal-transition-speed "fast"
+          org-reveal-history t
+          org-reveal-control t
+          org-reveal-progress t
+          org-reveal-rolling-links nil)))
