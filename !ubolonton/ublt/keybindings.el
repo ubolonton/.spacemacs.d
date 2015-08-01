@@ -357,3 +357,17 @@
   "M-l"        'move-to-window-line-top-bottom
   "C-c C-c"    'dired-toggle-read-only
   "M-o"        'dired-omit-mode)
+
+(eval-after-load "ido"
+  '(progn
+     (defun ublt//set-up-ido-keymaps ()
+       (ublt/define-keys ido-completion-map
+         "<tab>"  'ido-complete
+         "<down>" 'ido-next-match
+         "<up>"   'ido-prev-match
+         ;; Select first decide where to do later
+         "s-m"   'spacemacs/ido-navigation-micro-state
+         'split-window-vertically   'ido-invoke-in-vertical-split
+         'split-window-horizontally 'ido-invoke-in-horizontal-split
+         'other-window              'ido-invoke-in-other-window))
+     (add-hook 'ido-setup-hook 'ublt//set-up-ido-keymaps)))
