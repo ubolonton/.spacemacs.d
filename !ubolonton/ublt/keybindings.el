@@ -4,13 +4,15 @@
   (declare (indent 1))
   (let ((i 0))
     (while (< i (length ps))
-      (if (= (mod i 2) 0)
-          (let ((src (elt ps i))
-                (dst (elt ps (1+ i))))
-            (define-key key-map
-              (read-kbd-macro src) (if (stringp dst)
-                                       (read-kbd-macro dst)
-                                     dst))))
+      (let ((src (elt ps i))
+            (dst (elt ps (1+ i))))
+        (define-key key-map
+          (if (symbolp src)
+              (vector 'remap src)
+            (read-kbd-macro src))
+          (if (stringp dst)
+              (read-kbd-macro dst)
+            dst)))
       (setq i (+ i 2)))))
 
 (font-lock-add-keywords
@@ -153,6 +155,7 @@
   "s-F"           'helm-projectile
   ;; "s-F"           'projectile-find-file
   "s-g"           'magit-status
+  "s-C-g"         'magit-dispatch-popup
   "s-G"           'find-grep
   ;; "s-G"           'projectile-grep
   "s-m"           'ace-jump-mode
@@ -309,7 +312,18 @@
   "M-<mouse-4>"   'scroll-down-line
   "M-<mouse-5>"   'scroll-up-line)
 
+
+
 (ublt/keys 'org org-mode-map
+  ;; Why org uses these functions for sparse-tree-match navigation I
+  ;; don't even know. Well, it's likely there will never be another
+  ;; definition of "error" in org buffer, so it's fine.
+  ;; TODO: `org-sparse-tree'
+  ;; TODO: `org-store-link'
+  ;; TODO: `org-insert-link'
+  "M-p" 'previous-error
+  "M-n" 'next-error
+  "M-a" 'org-cycle
   "s-i" 'helm-org-in-buffer-headings)
 
 (ublt/keys 'helm helm-map
@@ -317,5 +331,29 @@
   "s-<return> " 'minibuffer-keyboard-quit
   "C-x h"       'helm-mark-all
   "C-f"         'helm-follow-mode
-  "s-n"         'helm-select-action
-  "s-w"         'ublt-helm/maybe-exit-minibuffer-other-window)
+  "s-m"         'spacemacs/helm-navigation-micro-state ; ESC maybe?
+  'ublt-navigation/switch-to-last-buffer 'helm-select-action
+  'other-window                          'ublt-helm/maybe-exit-minibuffer-other-window)
+
+(ublt/keys 'magit magit-mode-map
+  "M-a"   'magit-section-toggle
+  "C-M-u" 'magit-section-up)
+(ublt/keys 'with-editor with-editor-mode-map
+  "s-s"     'with-editor-finish
+  "C-x C-s" 'with-editor-finish
+  "s-k"     'with-editor-cancel)
+
+(ublt/keys 'flycheck flycheck-mode-map
+  "M-p" 'flycheck-previous-error
+  "M-n" 'flycheck-next-error)
+
+(ublt/keys 'dired dired-mode-map
+  "M-RET"      'ublt-dired/open-native
+  ;; It makes more sense to search in filenames by default
+  "C-s"        'dired-isearch-filenames-regexp
+  "C-S-s"      'isearch-forward-regexp
+  "C-M-s"      'dired-isearch-filenames
+  "C-M-S-s"    'isearch-forward
+  "M-l"        'move-to-window-line-top-bottom
+  "C-c C-c"    'dired-toggle-read-only
+  "M-o"        'dired-omit-mode)
