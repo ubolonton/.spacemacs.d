@@ -31,6 +31,7 @@
    emacs-lisp
    clojure
    python
+   scala
    javascript ublt-js
    html
    sql
